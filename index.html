@@ -56,7 +56,9 @@
 
   body {
     font-family: var(--font);
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: radial-gradient(color-mix(in srgb, var(--ink) 6%, transparent) 1px, transparent 1.5px);
+    background-size: 26px 26px;
     color: var(--ink);
     font-size: 18px;
     line-height: 1.72;
@@ -122,7 +124,19 @@
 
   /* ── Section rhythm ───────────────────────────────── */
   section { padding: 104px 0; }
-  #hero { padding: 180px 0 96px; }
+  #hero { padding: 180px 0 96px; position: relative; overflow: hidden; }
+  #hero .col { position: relative; z-index: 1; }
+  #hero::before {
+    content: "\201C"; position: absolute; top: 84px; right: 3%; z-index: 0;
+    font-family: var(--serif); font-style: italic; font-weight: 500;
+    font-size: clamp(9rem, 24vw, 18rem); line-height: .7;
+    color: color-mix(in srgb, var(--accent) 20%, transparent);
+    pointer-events: none; user-select: none;
+  }
+  @media (max-width: 600px) {
+    #hero::before { font-size: 7rem; top: 110px; right: 2%;
+      color: color-mix(in srgb, var(--accent) 14%, transparent); }
+  }
   .label {
     font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--faint); margin-bottom: 34px;
