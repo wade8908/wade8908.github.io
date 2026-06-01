@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- ─────────────────────────────────────────────────────────────
+     편집 가이드 (EDIT GUIDE)
+     · 한국어는 <span class="ko">, 영어는 <span class="en"> 안에 있습니다. 둘 다 채우면 토글이 자연스럽습니다.
+     · 로고/이름: 헤더와 푸터의 "서준원 / WADE" 를 원하는 표기로 바꾸세요.
+     · '함께한 곳'의 고객사는 .names 안에 · 로 구분되어 있습니다. 추가/삭제 자유.
+     · 색·여백·폰트는 :root 의 CSS 변수만 바꾸면 전체에 반영됩니다.
+     · SNS 링크는 Contact 의 [편집] 표시를 채우세요.
+     ───────────────────────────────────────────────────────────── -->
+<title>서준원 WADE — 콘텐츠 마케팅 · 커뮤니티 빌딩</title>
+<meta name="description" content="브랜드 콘텐츠 기획과 커뮤니티 빌딩. 강의, 컨설팅·자문, 모임 기획, 카피라이팅. 베스트셀러 『훅, 끌어당기는 콘텐츠 마케팅』 『모임의 기술』 저자." />
+
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+<style>
+  :root {
+    --bg:     #f7f6f2;
+    --ink:    #1c1a17;
+    --muted:  #8a857c;
+    --faint:  #b6b1a6;
+    --line:   #e4e0d8;
+    --col:    680px;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+            "Pretendard", "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  ::selection { background: var(--ink); color: var(--bg); }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.72;
+    letter-spacing: -0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .col { max-width: var(--col); margin: 0 auto; padding: 0 28px; }
+
+  .en { display: none; }
+  body.lang-en .ko { display: none; }
+  body.lang-en .en { display: inline; }
+  .block.en { display: none; }
+  body.lang-en .block.ko { display: none; }
+  body.lang-en .block.en { display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Header ───────────────────────────────────────── */
+  header {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    border-bottom: 1px solid transparent;
+    transition: background .4s ease, border-color .4s ease;
+  }
+  header.scrolled {
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar {
+    max-width: var(--col); margin: 0 auto; padding: 19px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .nav { display: flex; align-items: center; gap: 24px; }
+  .nav a.navlink {
+    font-size: 14.5px; color: var(--muted); position: relative; padding: 2px 0;
+    transition: color .25s ease;
+  }
+  .nav a.navlink::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0;
+    background: currentColor; transition: width .3s cubic-bezier(.4,0,.2,1);
+  }
+  .nav a.navlink:hover { color: var(--ink); }
+  .nav a.navlink:hover::after { width: 100%; }
+
+  .lang-toggle {
+    font-family: var(--font); font-size: 13px; font-weight: 500;
+    color: var(--muted); background: none; border: none; cursor: pointer;
+    padding: 4px 2px; letter-spacing: 0.02em; transition: color .25s ease;
+  }
+  .lang-toggle:hover { color: var(--ink); }
+  .lang-toggle .sep { color: var(--faint); margin: 0 5px; }
+  .lang-toggle .cur { color: var(--ink); }
+  @media (max-width: 580px) { .nav a.navlink { display: none; } }
+
+  /* ── Section rhythm ───────────────────────────────── */
+  section { padding: 104px 0; }
+  #hero { padding: 180px 0 96px; }
+  .label {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 34px;
+    display: flex; align-items: baseline; gap: 11px;
+  }
+
+  /* ── Hero ─────────────────────────────────────────── */
+  .hero-h {
+    font-size: clamp(2.1rem, 5.6vw, 3.35rem); font-weight: 600;
+    line-height: 1.26; letter-spacing: -0.026em; margin-bottom: 30px;
+  }
+  .hero-sub {
+    font-size: 1.14rem; color: var(--muted); line-height: 1.7;
+    max-width: 42ch; margin-bottom: 40px;
+  }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 1.02rem; font-weight: 500; color: var(--ink);
+    padding-bottom: 3px; border-bottom: 1px solid var(--ink);
+    transition: gap .3s cubic-bezier(.4,0,.2,1), opacity .25s ease;
+  }
+  .cta:hover { gap: 14px; opacity: .65; }
+
+  /* ── About ────────────────────────────────────────── */
+  .about-h {
+    font-size: clamp(1.42rem, 3.4vw, 1.95rem); font-weight: 500;
+    line-height: 1.45; letter-spacing: -0.016em; margin-bottom: 34px;
+  }
+  .prose p { color: var(--muted); margin-bottom: 19px; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 30px 52px; margin-top: 44px;
+    padding-top: 30px; border-top: 1px solid var(--line);
+  }
+  .stat .n { font-size: 1.85rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1; }
+  .stat .l { font-size: 0.85rem; color: var(--muted); margin-top: 8px; letter-spacing: 0.005em; }
+
+  .career { margin-top: 44px; }
+  .career .row {
+    display: grid; grid-template-columns: 150px 1fr; gap: 18px;
+    padding: 15px 0; border-top: 1px solid var(--line); font-size: 0.98rem;
+  }
+  .career .row:last-child { border-bottom: 1px solid var(--line); }
+  .career .yr { color: var(--faint); white-space: nowrap; }
+  .career .role { color: var(--ink); }
+  @media (max-width: 480px) {
+    .career .row { grid-template-columns: 1fr; gap: 3px; }
+  }
+
+  /* ── Books ────────────────────────────────────────── */
+  .book { padding: 24px 0; border-top: 1px solid var(--line); }
+  .book:last-child { border-bottom: 1px solid var(--line); }
+  .book-title { font-size: 1.28rem; font-weight: 600; letter-spacing: -0.015em; }
+  .book-tag {
+    font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 2px 9px; margin-left: 10px; vertical-align: middle; white-space: nowrap;
+  }
+  .book-meta { color: var(--faint); font-size: 0.92rem; margin-top: 5px; letter-spacing: 0.01em; }
+  .book-desc { color: var(--muted); font-size: 1rem; line-height: 1.62; margin-top: 11px; max-width: 56ch; }
+
+  /* ── Services ─────────────────────────────────────── */
+  .svc { padding: 28px 0; border-top: 1px solid var(--line); }
+  .svc:last-child { border-bottom: 1px solid var(--line); }
+  .svc-title {
+    font-size: 1.28rem; font-weight: 600; letter-spacing: -0.015em;
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 7px;
+  }
+  .svc-title .idx { font-size: 0.78rem; color: var(--faint); font-weight: 600; }
+  .svc-desc { color: var(--muted); font-size: 1.02rem; line-height: 1.66; max-width: 54ch; }
+  .svc-ref { margin-top: 9px; font-size: 0.84rem; color: var(--faint); line-height: 1.55; letter-spacing: 0.01em; }
+  .talks { margin-top: 8px; }
+  .trow {
+    display: grid; grid-template-columns: 62px 1fr; gap: 16px;
+    padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.95rem;
+  }
+  .trow:last-child { border-bottom: 1px solid var(--line); }
+  .trow .ty { color: var(--faint); white-space: nowrap; }
+  .trow .tt { color: var(--ink); }
+  @media (max-width: 480px) { .trow { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* ── Projects ─────────────────────────────────────── */
+  .proj { padding: 22px 0; border-top: 1px solid var(--line); }
+  .proj:last-of-type { border-bottom: 1px solid var(--line); }
+  .proj-head {
+    display: flex; align-items: baseline; gap: 10px 14px; flex-wrap: wrap; margin-bottom: 5px;
+  }
+  .proj-name { font-size: 1.18rem; font-weight: 600; letter-spacing: -0.015em; }
+  .proj-role { font-size: 0.82rem; color: var(--faint); font-weight: 500; letter-spacing: 0.01em; }
+  .proj-yr { font-size: 0.8rem; color: var(--faint); margin-left: auto; white-space: nowrap; }
+  .proj-desc { color: var(--muted); font-size: 1rem; line-height: 1.62; max-width: 58ch; }
+  .proj-desc .q { color: var(--ink); }
+  .proj-metric {
+    margin-top: 10px; font-size: 0.92rem; color: var(--ink);
+    display: flex; align-items: baseline; gap: 9px; line-height: 1.5;
+  }
+  .proj-metric::before {
+    content: ""; flex: none; width: 14px; height: 1px; background: var(--ink);
+    transform: translateY(-4px);
+  }
+  @media (max-width: 480px) { .proj-yr { margin-left: 0; width: 100%; } }
+  .subhead {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--faint); margin: 44px 0 4px;
+  }
+
+  /* ── Clients ──────────────────────────────────────── */
+  .clients-intro { color: var(--muted); margin-bottom: 8px; max-width: 50ch; }
+  .cgroup { padding: 24px 0; border-top: 1px solid var(--line); }
+  .cgroup:last-child { border-bottom: 1px solid var(--line); }
+  .clabel {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 12px;
+  }
+  .names { color: var(--ink); line-height: 1.95; font-size: 1.04rem; }
+  .names .dot { color: var(--faint); margin: 0 4px; }
+  .more-note { color: var(--faint); font-size: 0.92rem; margin-top: 22px; }
+
+  /* ── Contact ──────────────────────────────────────── */
+  .contact-h {
+    font-size: clamp(1.6rem, 4.2vw, 2.4rem); font-weight: 600;
+    letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 22px;
+  }
+  .contact-sub { color: var(--muted); font-size: 1.1rem; max-width: 44ch; margin-bottom: 36px; }
+  .contact-mail {
+    display: inline-block; font-size: clamp(1.35rem, 3.4vw, 1.95rem);
+    font-weight: 500; letter-spacing: -0.02em;
+    border-bottom: 1px solid var(--line); padding-bottom: 4px;
+    transition: border-color .3s ease, opacity .25s ease;
+  }
+  .contact-mail:hover { border-color: var(--ink); opacity: .7; }
+  .socials { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px 34px; }
+  .socials a { font-size: 15px; color: var(--muted); transition: color .25s ease; }
+  .socials a:hover { color: var(--ink); }
+  .socials .tag { color: var(--faint); }
+
+  /* ── Footer ───────────────────────────────────────── */
+  footer { padding: 40px 0 52px; border-top: 1px solid var(--line); }
+  .footer-row {
+    max-width: var(--col); margin: 0 auto; padding: 0 28px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    color: var(--faint); font-size: 13.5px; letter-spacing: 0.01em;
+  }
+
+  /* ── Reveal ───────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.6,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::after { transition: none !important; animation: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="lang-ko">
+
+  <header id="hdr">
+    <div class="bar">
+      <a href="#hero" class="logo"><span class="ko">서준원</span><span class="en">WADE</span></a>
+      <div class="nav">
+        <a href="#about" class="navlink"><span class="ko">소개</span><span class="en">About</span></a>
+        <a href="#services" class="navlink"><span class="ko">하는 일</span><span class="en">Services</span></a>
+        <a href="#contact" class="navlink"><span class="ko">연락</span><span class="en">Contact</span></a>
+        <button class="lang-toggle" id="langBtn" aria-label="Switch language">
+          <span class="cur" id="langKo">한</span><span class="sep">/</span><span id="langEn">EN</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────── -->
+  <section id="hero">
+    <div class="col">
+      <div class="label reveal">
+        <span class="ko">브랜드 콘텐츠 · 커뮤니티 빌딩 · 강의·자문</span>
+        <span class="en">Brand Content · Community · Teaching</span>
+      </div>
+      <h1 class="hero-h reveal">
+        <span class="ko">콘텐츠로 끌어당기고,<br />모임으로 머무르게 합니다.</span>
+        <span class="en">Content that pulls people in.<br />Community that makes them stay.</span>
+      </h1>
+      <p class="hero-sub reveal">
+        <span class="ko">안녕하세요, 준원입니다. 빠르게 바뀌는 흐름을 읽고, 그 안에서 사람을 모으는 일을 좋아해요. 요즘은 LBCC를 운영하며 모임을 만들고, 브랜드의 콘텐츠와 커뮤니티를 강의하고 자문합니다.</span>
+        <span class="en">Hi, I'm Wade. I like reading where things are headed, and bringing people together inside it. These days I run LBCC — designing gatherings, and teaching and advising brands on content and community.</span>
+      </p>
+      <a href="#contact" class="cta reveal">
+        <span class="ko">함께 이야기해요</span><span class="en">Let's talk</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── 01 About ───────────────────────────────────── -->
+  <section id="about">
+    <div class="col">
+      <div class="label reveal"><span>01</span><span class="ko">소개</span><span class="en">About</span></div>
+      <h2 class="about-h reveal">
+        <span class="ko">콘텐츠와 모임, 두 가지로 브랜드와 사람을 잇는 일을 해요.</span>
+        <span class="en">I connect brands and people through two things — content, and gatherings.</span>
+      </h2>
+      <div class="prose reveal">
+        <div class="block ko">
+          <p>대학내일 크리에이티브센터에서 콘텐츠를 만들고, LG유플러스에서 라이프플랫폼을 기획하다가, 지금은 <strong>LBCC를 만들어 운영</strong>하고 있어요.</p>
+          <p>콘텐츠 마케팅과 모임을 주제로 두 권의 책을 썼고, 같은 주제로 기업·공공기관·대학에서 강의와 자문을 이어오고 있어요. 제가 믿는 건 단순해요. 좋은 콘텐츠는 <strong>최대한 많은 사람이 공감하는 데</strong>서 출발하고, 좋은 커뮤니티는 ‘성장’보다 <strong>‘생장’</strong>으로 자란다는 것.</p>
+          <p>그래서 LBCC에서는 누구의 말도 평가하지 않아요. <strong>대화다운 대화가 오가는 안전지대</strong>를 만드는 게, 요즘 제가 가장 즐거워하는 일이에요.</p>
+        </div>
+        <div class="block en">
+          <p>I built content at Daehaknaeil's Creative Center, planned a life platform at LG U+, and now I <strong>run LBCC</strong>, a community I co-founded.</p>
+          <p>I've written two books on content marketing and community, and I teach and advise on both for companies, public institutions, and universities. What I believe is simple: good content starts from <strong>what the most people can relate to</strong>, and good communities don't just grow — <strong>they take root</strong>.</p>
+          <p>That's why at LBCC we never judge what anyone says. Building a <strong>safe place for real conversation</strong> is what I enjoy most these days.</p>
+        </div>
+      </div>
+
+      <div class="stats reveal">
+        <div class="stat">
+          <div class="n">10<span class="ko">년+</span><span class="en">yrs+</span></div>
+          <div class="l"><span class="ko">콘텐츠·마케팅 경력</span><span class="en">in content &amp; marketing</span></div>
+        </div>
+        <div class="stat">
+          <div class="n">2</div>
+          <div class="l"><span class="ko">베스트셀러 저서</span><span class="en">bestselling books</span></div>
+        </div>
+        <div class="stat">
+          <div class="n">40+</div>
+          <div class="l"><span class="ko">강의·자문한 브랜드·기관</span><span class="en">brands &amp; institutions</span></div>
+        </div>
+        <div class="stat">
+          <div class="n">15+</div>
+          <div class="l"><span class="ko">기획·운영한 브랜드 채널</span><span class="en">brand channels built</span></div>
+        </div>
+      </div>
+
+      <div class="career reveal">
+        <div class="row">
+          <span class="yr">2022 — <span class="ko">현재</span><span class="en">Now</span></span>
+          <span class="role"><span class="ko">LBCC · 공동창업자 &amp; 대표</span><span class="en">LBCC · Co-founder &amp; CEO</span></span>
+        </div>
+        <div class="row">
+          <span class="yr">2023 — 2024</span>
+          <span class="role"><span class="ko">LG유플러스 베를린TF · PM, 라이프플랫폼 책임</span><span class="en">LG U+ Berlin TF · PM, Life Platform Lead</span></span>
+        </div>
+        <div class="row">
+          <span class="yr">2015 — 2023</span>
+          <span class="role"><span class="ko">대학내일 크리에이티브센터 · 수석</span><span class="en">Daehaknaeil, Creative Center · Chief</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 Books ───────────────────────────────────── -->
+  <section id="books">
+    <div class="col">
+      <div class="label reveal"><span>02</span><span class="ko">저서</span><span class="en">Books</span></div>
+
+      <div class="book reveal">
+        <div class="book-title">훅, 끌어당기는 콘텐츠 마케팅<span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
+        <div class="book-meta">
+          <span class="ko">아시아 · 2023 · 2쇄</span>
+          <span class="en">Asia Publishers · 2023 · 2nd printing</span>
+        </div>
+        <p class="book-desc">
+          <span class="ko">매출과 브랜딩을 동시에 잡는 콘텐츠 마케팅의 5단계 전략. 7년간 현장에서 쌓은 노하우와 바로 쓰는 문서 양식까지 한 권에 담았어요.</span>
+          <span class="en">A five-step content-marketing playbook for both sales and branding — seven years of fieldwork, plus ready-to-use templates.</span>
+        </p>
+      </div>
+
+      <div class="book reveal">
+        <div class="book-title">모임의 기술<span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
+        <div class="book-meta">
+          <span class="ko">리드앤두 · 2025 · 2쇄</span>
+          <span class="en">Lead&amp;Do · 2025 · 2nd printing</span>
+        </div>
+        <p class="book-desc">
+          <span class="ko">사람을 모으고, 좋은 대화가 머무르게 하는 법. 누구도 평가받지 않는 대화의 자리를 설계해 온 경험을 실전 가이드로 풀었어요.</span>
+          <span class="en">How to bring people together and make good conversation stay — a hands-on guide to designing judgment-free gatherings.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 Services ────────────────────────────────── -->
+  <section id="services">
+    <div class="col">
+      <div class="label reveal"><span>03</span><span class="ko">하는 일</span><span class="en">Services</span></div>
+
+      <div class="svc reveal">
+        <div class="svc-title"><span class="idx">A</span><span class="ko">강의 · 워크숍</span><span class="en">Lectures &amp; Workshops</span></div>
+        <p class="svc-desc">
+          <span class="ko">콘텐츠 기획, 브랜드 마케팅, 카피라이팅, 커뮤니티 빌딩을 쉽고 바로 쓸 수 있게 알려드려요. 기업 교육·공공기관·대학·온라인 클래스까지.</span>
+          <span class="en">I teach content planning, brand marketing, copywriting, and community building in a way you can use right away — for companies, public institutions, universities, and online classes.</span>
+        </p>
+        <p class="svc-ref">
+          <span class="ko">카카오 비즈니스 · CJ 인재원 · 아모레퍼시픽 이니스프리 · 국립중앙도서관 전국 사서 · 서울시 주무관 · 기아 · 야나두 클래스 외 다수</span>
+          <span class="en">Kakao Business · CJ · AmorePacific innisfree · National Library (nationwide) · Seoul City · Kia · Yanadoo, and many more</span>
+        </p>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-title"><span class="idx">B</span><span class="ko">컨설팅 · 자문</span><span class="en">Consulting &amp; Advisory</span></div>
+        <p class="svc-desc">
+          <span class="ko">브랜드의 콘텐츠·마케팅 방향과 커뮤니티 기획을 함께 설계해요. 채널 컨셉 설계부터 콘텐츠 전략까지, 단발 자문부터 정기 컨설팅까지 필요한 만큼.</span>
+          <span class="en">Together we shape your content and marketing direction and your community strategy — from channel concept to content plan, one-off advisory to ongoing consulting.</span>
+        </p>
+        <p class="svc-ref">
+          <span class="ko">현대차그룹 · 삼성증권 · 이랜드 리테일 · kt · LG유플러스 등 신규 채널 컨셉~콘텐츠 전략 설계</span>
+          <span class="en">New-channel concept &amp; content strategy for Hyundai Motor Group, Samsung Securities, E-Land, kt, LG U+, and others</span>
+        </p>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-title"><span class="idx">C</span><span class="ko">모임 기획 · 모더레이팅</span><span class="en">Gatherings &amp; Moderating</span></div>
+        <p class="svc-desc">
+          <span class="ko">LBCC를 비롯한 커뮤니티와 모임을 설계하고 직접 진행해요. 누구의 말도 평가하지 않는 자리에서, 대화다운 대화가 남도록.</span>
+          <span class="en">I design and host communities and gatherings, including LBCC — judgment-free rooms where real conversation can happen.</span>
+        </p>
+        <p class="svc-ref">
+          <span class="ko">LBCC 운영 · 소셜살롱 문토 콘텐츠 마케터 클럽 리더 · 성동도서관 ‘생각 중독자들을 위한 대화 클럽’ 클럽장</span>
+          <span class="en">Running LBCC · club leader at Munto social salon · host of “Club for Thought-Addicts” at Seongdong Library</span>
+        </p>
+      </div>
+
+      <div class="svc reveal">
+        <div class="svc-title"><span class="idx">D</span><span class="ko">카피라이팅</span><span class="en">Copywriting</span></div>
+        <p class="svc-desc">
+          <span class="ko">캠페인 카피, 광고 소재, 브랜드 메시지. 처음처럼·해치처럼 브랜드의 목소리를 만드는 일부터, 사서·신입사원 대상 카피라이팅 강의까지.</span>
+          <span class="en">Campaign copy, ad creative, brand messaging — from giving brands like Chum-Churum and Haechi their voice, to teaching copywriting to librarians and new hires.</span>
+        </p>
+        <p class="svc-ref">
+          <span class="ko">국립중앙도서관 전국 사서 카피라이팅 강의(2021·2023·2024) · CJ 인재원 신입사원 카피라이팅 · imweb 광고 소재 기획</span>
+          <span class="en">Copywriting for national librarians (2021·2023·2024) · CJ new-hire copywriting · imweb ad-creative planning</span>
+        </p>
+      </div>
+
+      <div class="subhead reveal"><span class="ko">주요 강의 · 자문 이력</span><span class="en">Selected Talks &amp; Advisory</span></div>
+      <div class="talks reveal">
+        <div class="trow"><span class="ty">2025</span><span class="tt"><span class="ko">LG전자 베스트샵 — 콘텐츠 기획 강의</span><span class="en">LG Electronics Best Shop — content planning</span></span></div>
+        <div class="trow"><span class="ty">2025</span><span class="tt"><span class="ko">월드전람 프랜차이즈 박람회 — 마케팅 전략·콘텐츠 기획 강의</span><span class="en">World Expo Franchise Fair — marketing &amp; content strategy</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">카카오 비즈니스 세미나 — 강의</span><span class="en">Kakao Business Seminar — talk</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">CJ 인재원 — 신입사원·임직원 소셜미디어 카피라이팅</span><span class="en">CJ Institute — social-media copywriting for new hires &amp; staff</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">DMBF 2024 컨퍼런스 — 브랜드 콘텐츠 부문 연사</span><span class="en">DMBF 2024 Conference — brand content speaker</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">화성시 인재육성재단 — 콘텐츠 기획·카피라이팅</span><span class="en">Hwaseong Talent Foundation — content &amp; copywriting</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">imweb — 브랜드 광고 소재 기획 강의</span><span class="en">imweb — ad-creative planning</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">성동도서관 길위의인문학 — 『생각 중독자들을 위한 대화 클럽』 클럽장</span><span class="en">Seongdong Library — host, “Club for Thought-Addicts”</span></span></div>
+        <div class="trow"><span class="ty">2024</span><span class="tt"><span class="ko">IGM세계경영연구원 알바트로스 — 일반 대상 강의</span><span class="en">IGM Albatross — public lecture</span></span></div>
+        <div class="trow"><span class="ty">2023</span><span class="tt"><span class="ko">기아 — 인플루언서 앰배서더 ‘Kia Curator’ 소셜미디어 트렌드 강의</span><span class="en">Kia — social-media trends for the “Kia Curator” ambassadors</span></span></div>
+        <div class="trow"><span class="ty">2023</span><span class="tt"><span class="ko">LG유플러스 CTO 조직 — 블로그 콘텐츠 기획 강의</span><span class="en">LG U+ CTO org — blog content planning</span></span></div>
+        <div class="trow"><span class="ty">2023</span><span class="tt"><span class="ko">서울창업허브 — 실무자 대상 소셜미디어 트렌드 강의</span><span class="en">Seoul Startup Hub — social-media trends for practitioners</span></span></div>
+        <div class="trow"><span class="ty">2023</span><span class="tt"><span class="ko">서울특별시 주무관 — SNS 트렌드 강의</span><span class="en">Seoul City officials — social trends</span></span></div>
+        <div class="trow"><span class="ty">'21–'24</span><span class="tt"><span class="ko">국립중앙도서관 — 전국 사서 대상 카피라이팅 강의 (3회)</span><span class="en">National Library of Korea — copywriting for librarians nationwide (×3)</span></span></div>
+        <div class="trow"><span class="ty">2022</span><span class="tt"><span class="ko">아모레퍼시픽 이니스프리 — 카피라이팅 강의</span><span class="en">AmorePacific innisfree — copywriting</span></span></div>
+        <div class="trow"><span class="ty">2022</span><span class="tt"><span class="ko">야나두 클래스 — 콘텐츠 기획 강사</span><span class="en">Yanadoo Class — content-planning instructor</span></span></div>
+        <div class="trow"><span class="ty">2022</span><span class="tt"><span class="ko">루트임팩트 잡페어링 — 콘텐츠 마케터 부문 연사</span><span class="en">Root Impact Job Fairing — content-marketing speaker</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">WANTED 웨비나 — ‘성과를 내는 마케팅’ 연사</span><span class="en">Wanted webinar — “Marketing that delivers” speaker</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">소셜살롱 문토 — 콘텐츠 마케터 클럽 리더</span><span class="en">Munto social salon — content-marketer club leader</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">서울산업진흥원 — 콘텐츠 마케터 모임 리더</span><span class="en">Seoul Business Agency — content-marketer group leader</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">서울 핀테크랩 — SNS 디지털 콘텐츠 기획 강의</span><span class="en">Seoul Fintech Lab — digital content planning</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">경기문화창조허브 — 에코브랜드 콘텐츠 기획 전략 강의</span><span class="en">Gyeonggi Culture Hub — eco-brand content strategy</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">전주시청 — 메타버스 마케팅 활용 강의</span><span class="en">Jeonju City — marketing with the metaverse</span></span></div>
+        <div class="trow"><span class="ty">2021</span><span class="tt"><span class="ko">서울청년센터 — 콘텐츠 카피라이팅 강의 · 커리어리 브랜드 커리어콘 연사</span><span class="en">Seoul Youth Center — copywriting · Careerly Brand Careercon speaker</span></span></div>
+        <div class="trow"><span class="ty">2018</span><span class="tt"><span class="ko">서울특별시 주무관 — 팬덤을 만드는 콘텐츠 기획 강의</span><span class="en">Seoul City officials — content planning that builds fandom</span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04 Clients ─────────────────────────────────── -->
+  <section id="work">
+    <div class="col">
+      <div class="label reveal"><span>04</span><span class="ko">작업</span><span class="en">Selected Work</span></div>
+      <p class="clients-intro reveal">
+        <span class="ko">10년 가까이 대학내일과 LG유플러스에서 브랜드 콘텐츠와 채널을 만들었어요. 숫자로 남은 작업 몇 가지예요.</span>
+        <span class="en">For nearly a decade I built brand content and channels at Daehaknaeil and LG U+. A few projects, told with the numbers.</span>
+      </p>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">롯데칠성주류 처음처럼</span><span class="en">Chum-Churum (Lotte)</span></span>
+          <span class="proj-role"><span class="ko">소주 · 콘텐츠 총괄 기획</span><span class="en">Soju · Lead content planner</span></span>
+          <span class="proj-yr">2017–2023</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">위트 있는 커뮤니케이션으로 타 소주 브랜드 팬까지 끌어왔고, 자매 브랜드 청하와 엮어 하나의 브랜드 유니버스를 만들었어요. <span class="q">“마실 운명은 마시게 돼 있어요.”</span></span>
+          <span class="en">Witty communication that pulled in fans of rival sojus, woven together with sister brand Cheongha into one brand universe. <span class="q">“Some fates are meant to be poured.”</span></span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">제11회 인터넷소통대상 기업부문 통합대상 (2018) · 동일 산업 내 인터랙션 1위</span>
+          <span class="en">Grand Prize, 11th Internet Communication Awards (2018) · #1 engagement in its category</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">LG유플러스 너겟</span><span class="en">LG U+ Nerget</span></span>
+          <span class="proj-role"><span class="ko">콘텐츠 TF · PM, 책임</span><span class="en">Content TF · PM, Lead</span></span>
+          <span class="proj-yr">2023–2024</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">신사업 조직 인피니스타에서 신규 요금제 브랜드 ‘너겟’ 런칭을 맡아, 콘텐츠 전략부터 온드미디어 운영, 단기 프로모션과 장기 브랜드 캠페인까지 설계했어요.</span>
+          <span class="en">At the new-venture org Infinista, I led the launch of the new plan brand “Nerget” — from content strategy to owned-media operations, short-term promotions, and long-term brand campaigns.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">런칭 2분기 만에 가입자 200명 → 1만 명 · 입사 첫 해 승진(선임→책임), 인사고과 S</span>
+          <span class="en">200 → 10,000 subscribers within two quarters · promoted in my first year, top performance rating</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">현대자동차그룹 ㄹㄹㄹ</span><span class="en">Hyundai Motor Group “ㄹㄹㄹ”</span></span>
+          <span class="proj-role"><span class="ko">MZ 채널 · 컨셉~콘텐츠</span><span class="en">Gen-Z channel · Concept to content</span></span>
+          <span class="proj-yr">2019–2020</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">신비주의 컨셉의 MZ 타깃 신규 채널을, 컨셉 컨설팅부터 콘텐츠·영상 기획까지 도맡았어요. B급 감성으로 등장과 동시에 화제가 됐죠.</span>
+          <span class="en">A mystique-driven new channel for Gen Z — I owned everything from concept consulting to content and video planning. Its B-grade humor made noise from day one.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">채널 운영 3개월 만에 인스타그램 팔로워 5만 달성</span>
+          <span class="en">50,000 Instagram followers within three months of launch</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">이랜드 리테일 후아유</span><span class="en">E-Land WHO.A.U</span></span>
+          <span class="proj-role"><span class="ko">인스타 채널 · 컨셉~콘텐츠</span><span class="en">Instagram channel · Concept to content</span></span>
+          <span class="proj-yr">2021</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">매장을 통째로 인스타그램에 옮긴 듯한 세계관을 제안하고, 채널 컨셉부터 콘텐츠·카피까지 만들었어요.</span>
+          <span class="en">I proposed a world that felt like the whole store had moved onto Instagram, and built the channel from concept to content and copy.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">개설 1개월 만에 팔로워 1만 · 게시물 평균 좋아요 500</span>
+          <span class="en">10,000 followers in the first month · avg. 500 likes per post</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">삼성증권 쮸토피아</span><span class="en">Samsung Securities “Jjutopia”</span></span>
+          <span class="proj-role"><span class="ko">캐릭터 채널 · 콘텐츠 총괄</span><span class="en">Character channel · Lead content</span></span>
+          <span class="proj-yr">2022</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">어려운 경제 이야기를 캐릭터의 톤&amp;매너로 다시 풀어, 사람들이 댓글로 떠드는 채널로 만들었어요.</span>
+          <span class="en">I retuned a character channel's voice so finance felt approachable — and got people talking in the comments.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">운영 기간 평균 좋아요 100%↑, 댓글 200%↑</span>
+          <span class="en">avg. likes +100%, comments +200% over the period</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">서울특별시 해치</span><span class="en">Seoul City “Haechi”</span></span>
+          <span class="proj-role"><span class="ko">공식 캐릭터 · 단독 기획·카피</span><span class="en">Official mascot · Solo planning &amp; copy</span></span>
+          <span class="proj-yr">2019–2023</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">서울의 공식 캐릭터 ‘해치’를 페르소나로, 딱딱한 시정과 공공 이야기를 쉽고 위트 있게 옮겼어요. 캐릭터 계정을 따로 키워 팬덤까지 만들었고요.</span>
+          <span class="en">Using Seoul's official mascot “Haechi” as a persona, I turned stiff civic news into easy, witty content — and grew a dedicated fan community around the character.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">단독 프로젝트 · 공식 캐릭터 팬덤 커뮤니티 형성</span>
+          <span class="en">Solo project · built a fandom community around the mascot</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">대학내일 직장내일</span><span class="en">Daehaknaeil “Jikjang-naeil”</span></span>
+          <span class="proj-role"><span class="ko">직장인 미디어 · 기획·카피·디자인</span><span class="en">Worker media · Planning, copy, design</span></span>
+          <span class="proj-yr">2016–2023</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">회사원의 웃픈 일상을 소재로 <span class="q">“광고인 걸 알면서도 보게 되는 마성의 채널”</span>을 만들었고, 베스트 콘텐츠는 책으로도 묶였어요.</span>
+          <span class="en">Content built from the bittersweet comedy of office life — <span class="q">“a channel you watch even knowing it's an ad.”</span> The best of it became a published book.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">베스트 콘텐츠 단행본 출간 · 대학내일 대표 채널로 성장</span>
+          <span class="en">Best content published as a book · grew into a flagship Daehaknaeil channel</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">SK그룹 MEDIA SK</span><span class="en">SK Group MEDIA SK</span></span>
+          <span class="proj-role"><span class="ko">그룹 공식 블로그 · 콘텐츠 에디터</span><span class="en">Corporate blog · Content editor</span></span>
+          <span class="proj-yr">2018–2019</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">SK가 추구하는 ‘사회적 가치’를 콘텐츠로 풀어내고, 인터뷰와 비즈니스 소개 등 브랜드 저널리즘에 입각한 콘텐츠를 기획했어요.</span>
+          <span class="en">Content rooted in brand journalism — interviews and business stories that translated SK's “social value” into something people would actually read.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">타 그룹사·계열사의 모범 운영 사례로 등극</span>
+          <span class="en">Held up as a best-practice channel across the group's affiliates</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">kt ‘Y’</span><span class="en">kt “Y”</span></span>
+          <span class="proj-role"><span class="ko">20대 전용 채널 · 콘텐츠 에디터</span><span class="en">Gen-Z channel · Content editor</span></span>
+          <span class="proj-yr">2022–2023</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">20대 전용 브랜드 채널의 콘텐츠 완성도를 끌어올리고, 콘텐츠 소스를 만드는 대학생 서포터즈 ‘Y퓨처리스트’에 가이드와 교육을 제공했어요.</span>
+          <span class="en">Raised the bar on a Gen-Z brand channel, and trained the student supporters (“Y Futurists”) who fed it content.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">높은 만족도로 22–23년 연속 운영 · 퓨처리스트 콘텐츠 교육 100% 담당</span>
+          <span class="en">Renewed two years running on strong satisfaction · led 100% of the supporters' content training</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">현대자동차그룹 브랜드 저널</span><span class="en">Hyundai Motor Group brand journal</span></span>
+          <span class="proj-role"><span class="ko">브랜드 저널리즘 · 콘텐츠 기획</span><span class="en">Brand journalism · Content planning</span></span>
+          <span class="proj-yr">2015–2016</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">모던 프리미엄 커뮤니케이션 전략에 맞춰, 자동차를 좋아하는 사람이라면 누구든 팬이 되게 하는 고퀄리티 콘텐츠를 만들었어요.</span>
+          <span class="en">High-craft content tuned to a “modern premium” voice — made to turn anyone who loves cars into a fan.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">그룹이 할 수 있는 브랜드 저널리즘 콘텐츠의 정점을 제시</span>
+          <span class="en">Set the bar for what corporate brand-journalism content could be</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name">PUBLY</span>
+          <span class="proj-role"><span class="ko">SNS 콘텐츠 부문 · 전속 저자</span><span class="en">Social content · Staff author</span></span>
+          <span class="proj-yr">2020–2023</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">7년간 현장에서 쌓은 실무 감각으로, 브랜드가 고객과 어떻게 커뮤니케이션해야 하는지를 웹북과 아티클로 풀어냈어요.</span>
+          <span class="en">Turned seven years of hands-on practice into web-books and articles on how brands should actually talk to people.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">「인스타툰 마케팅 A to Z」 퍼블리 인기 콘텐츠 3위</span>
+          <span class="en">“Instatoon Marketing A to Z” ranked #3 among PUBLY's most popular pieces</span>
+        </p>
+      </div>
+
+      <div class="proj reveal">
+        <div class="proj-head">
+          <span class="proj-name"><span class="ko">대학내일 20대연구소</span><span class="en">Daehaknaeil 20s Lab</span></span>
+          <span class="proj-role"><span class="ko">트렌드워칭 그룹 · 집필진</span><span class="en">Trend-watching group · Author</span></span>
+          <span class="proj-yr">2016–2022</span>
+        </div>
+        <p class="proj-desc">
+          <span class="ko">국내 유일의 20대 전문 연구기관에서, 마케터가 주목해야 할 밀레니얼·Z세대 트렌드 키워드를 짚어내고 리포트로 묶었어요.</span>
+          <span class="en">At Korea's only research lab dedicated to people in their 20s, I tracked the millennial·Gen-Z trend keywords marketers needed — and put them into print.</span>
+        </p>
+        <p class="proj-metric">
+          <span class="ko">2016 트렌드리포트 단행본 공동 집필</span>
+          <span class="en">Co-authored the 2016 trend-report book</span>
+        </p>
+      </div>
+
+      <div class="subhead reveal"><span class="ko">함께한 곳</span><span class="en">Clients &amp; Partners</span></div>
+
+      <div class="cgroup reveal">
+        <div class="clabel"><span class="ko">기업 · 브랜드</span><span class="en">Brands</span></div>
+        <div class="names">
+          카카오<span class="dot">·</span>네이버<span class="dot">·</span>구글·유튜브<span class="dot">·</span>아모레퍼시픽 이니스프리<span class="dot">·</span>배달의민족<span class="dot">·</span>무신사<span class="dot">·</span>KIA<span class="dot">·</span>LG유플러스<span class="dot">·</span>LG전자<span class="dot">·</span>CJ<span class="dot">·</span>하나은행<span class="dot">·</span>삼성웰스토리<span class="dot">·</span>한솔그룹<span class="dot">·</span>야나두<span class="dot">·</span>imweb<span class="dot">·</span>퍼블리
+        </div>
+      </div>
+
+      <div class="cgroup reveal">
+        <div class="clabel"><span class="ko">공공 · 기관</span><span class="en">Public &amp; Institutions</span></div>
+        <div class="names">
+          서울시청<span class="dot">·</span>국립중앙도서관<span class="dot">·</span>환경부<span class="dot">·</span>한국은행<span class="dot">·</span>서울산업진흥원<span class="dot">·</span>인천공항공사<span class="dot">·</span>화성시 인재육성재단<span class="dot">·</span>한국마케팅진흥원<span class="dot">·</span>MYSC<span class="dot">·</span>루트임팩트<span class="dot">·</span>한국생명존중희망재단
+        </div>
+      </div>
+
+      <div class="cgroup reveal">
+        <div class="clabel"><span class="ko">대학 · 대외활동</span><span class="en">Universities &amp; Programs</span></div>
+        <div class="names">
+          SK 커리어스<span class="dot">·</span>KT Y퓨처리스트<span class="dot">·</span>LG디스플레이 디:플<span class="dot">·</span>LG에너지솔루션<span class="dot">·</span>GS리테일<span class="dot">·</span>KGC인삼공사<span class="dot">·</span>식약처 기자단<span class="dot">·</span>환경부 서포터즈
+        </div>
+      </div>
+
+      <p class="more-note reveal">
+        <span class="ko">서울청년센터, WANTED, 카카오 비즈니스 세미나, 배민아카데미, 경기문화창조허브 등 다수 — 전체 이력은 메일로 요청해 주세요.</span>
+        <span class="en">…and many more, including Wanted, Kakao Business Seminar, Baemin Academy. Full résumé available on request.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 05 Contact ─────────────────────────────────── -->
+  <section id="contact">
+    <div class="col">
+      <div class="label reveal"><span>05</span><span class="ko">연락</span><span class="en">Contact</span></div>
+      <h2 class="contact-h reveal">
+        <span class="ko">제안 · 의뢰, 편하게 연락 주세요.</span>
+        <span class="en">For projects and proposals, say hello.</span>
+      </h2>
+      <p class="contact-sub reveal">
+        <span class="ko">강의든 컨설팅이든 모임 기획이든, 지금 고민 중인 것부터 가볍게 이야기 나눠요. 메일 주시면 빠르게 답장드릴게요. 🌟</span>
+        <span class="en">Lectures, consulting, or designing a gathering — let's start with whatever you're thinking about. Drop me a line and I'll reply quickly.</span>
+      </p>
+      <a class="contact-mail reveal" href="mailto:jumerny89@gmail.com">jumerny89@gmail.com</a>
+      <div class="socials reveal">
+        <!-- [편집] 실제 링크가 생기면 아래 주석을 풀고 href 를 채우세요.
+        <a href="https://instagram.com/계정" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://LBCC주소" target="_blank" rel="noopener">LBCC</a>
+        -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-row">
+      <span>© <span id="year"></span> <span class="ko">서준원</span><span class="en">WADE</span></span>
+      <span><span class="ko">콘텐츠 마케팅 · 커뮤니티 빌딩</span><span class="en">Content Marketing · Community Building</span></span>
+    </div>
+  </footer>
+
+<script>
+  (function () {
+    var body = document.body;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var hdr = document.getElementById('hdr');
+    var onScroll = function () { hdr.classList.toggle('scrolled', window.scrollY > 16); };
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    if (!reduce && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el, i) {
+        el.style.transitionDelay = (Math.min(i, 5) * 0.05) + 's';
+        io.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+
+    var btn = document.getElementById('langBtn');
+    var ko = document.getElementById('langKo');
+    var en = document.getElementById('langEn');
+    function setLang(isEn, persist) {
+      body.classList.toggle('lang-en', isEn);
+      body.classList.toggle('lang-ko', !isEn);
+      document.documentElement.lang = isEn ? 'en' : 'ko';
+      ko.classList.toggle('cur', !isEn);
+      en.classList.toggle('cur', isEn);
+      if (persist) localStorage.setItem('lang', isEn ? 'en' : 'ko');
+    }
+    if (localStorage.getItem('lang') === 'en') setLang(true, false);
+    btn.addEventListener('click', function () {
+      setLang(!body.classList.contains('lang-en'), true);
+    });
+  })();
+</script>
+</body>
+</html>
