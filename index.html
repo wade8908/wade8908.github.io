@@ -163,6 +163,14 @@
   }
   .book-meta { color: var(--faint); font-size: 0.92rem; margin-top: 5px; letter-spacing: 0.01em; }
   .book-desc { color: var(--muted); font-size: 1rem; line-height: 1.62; margin-top: 11px; max-width: 56ch; }
+  .book-title a { color: inherit; transition: opacity .2s ease; }
+  .book-title a:hover { opacity: .58; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .book-buy {
+    display: inline-block; margin-top: 13px; font-size: 0.88rem; color: var(--muted);
+    border-bottom: 1px solid var(--line); padding-bottom: 2px;
+    transition: color .25s ease, border-color .25s ease, gap .25s ease;
+  }
+  .book-buy:hover { color: var(--ink); border-color: var(--ink); }
 
   /* ── Services ─────────────────────────────────────── */
   .svc { padding: 28px 0; border-top: 1px solid var(--line); }
@@ -363,7 +371,7 @@
       <div class="label reveal"><span>02</span><span class="ko">저서</span><span class="en">Books</span></div>
 
       <div class="book reveal">
-        <div class="book-title">훅, 끌어당기는 콘텐츠 마케팅<span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
+        <div class="book-title"><a href="https://product.kyobobook.co.kr/detail/S000211521512" target="_blank" rel="noopener">훅, 끌어당기는 콘텐츠 마케팅</a><span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
         <div class="book-meta">
           <span class="ko">아시아 · 2023 · 2쇄</span>
           <span class="en">Asia Publishers · 2023 · 2nd printing</span>
@@ -372,10 +380,11 @@
           <span class="ko">매출과 브랜딩을 동시에 잡는 콘텐츠 마케팅의 5단계 전략. 7년간 현장에서 쌓은 노하우와 바로 쓰는 문서 양식까지 한 권에 담았어요.</span>
           <span class="en">A five-step content-marketing playbook for both sales and branding — seven years of fieldwork, plus ready-to-use templates.</span>
         </p>
+        <a class="book-buy" href="https://product.kyobobook.co.kr/detail/S000211521512" target="_blank" rel="noopener"><span class="ko">교보문고에서 보기 →</span><span class="en">View on Kyobo →</span></a>
       </div>
 
       <div class="book reveal">
-        <div class="book-title">모임의 기술<span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
+        <div class="book-title"><a href="https://product.kyobobook.co.kr/detail/S000216482686" target="_blank" rel="noopener">모임의 기술</a><span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
         <div class="book-meta">
           <span class="ko">리드앤두 · 2025 · 2쇄</span>
           <span class="en">Lead&amp;Do · 2025 · 2nd printing</span>
@@ -384,6 +393,7 @@
           <span class="ko">사람을 모으고, 좋은 대화가 머무르게 하는 법. 누구도 평가받지 않는 대화의 자리를 설계해 온 경험을 실전 가이드로 풀었어요.</span>
           <span class="en">How to bring people together and make good conversation stay — a hands-on guide to designing judgment-free gatherings.</span>
         </p>
+        <a class="book-buy" href="https://product.kyobobook.co.kr/detail/S000216482686" target="_blank" rel="noopener"><span class="ko">교보문고에서 보기 →</span><span class="en">View on Kyobo →</span></a>
       </div>
     </div>
   </section>
