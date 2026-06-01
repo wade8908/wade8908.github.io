@@ -126,6 +126,25 @@
   }
   .cta:hover { gap: 14px; opacity: .65; }
 
+  /* ── Floating CTA ─────────────────────────────────── */
+  .fab {
+    position: fixed; right: 24px; bottom: 24px; z-index: 60;
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--ink); color: var(--bg);
+    font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+    padding: 14px 22px; border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(28,26,23,.20);
+    opacity: 0; transform: translateY(14px) scale(.96); pointer-events: none;
+    transition: opacity .45s ease, transform .45s cubic-bezier(.2,.6,.2,1), gap .25s ease;
+  }
+  .fab.show { opacity: 1; transform: none; pointer-events: auto; }
+  .fab:hover { gap: 14px; }
+  .fab .arrow { transition: transform .25s ease; }
+  .fab:hover .arrow { transform: translateX(4px); }
+  @media (max-width: 520px) {
+    .fab { right: 15px; bottom: 15px; padding: 12px 18px; font-size: 14px; }
+  }
+
   /* ── About ────────────────────────────────────────── */
   .about-h {
     font-size: clamp(1.42rem, 3.4vw, 1.95rem); font-weight: 500;
@@ -751,6 +770,11 @@
     </div>
   </section>
 
+  <a href="#contact" class="fab" id="fab" aria-label="프로젝트 문의하기 / Start a project">
+    <span class="ko">프로젝트 문의하기</span><span class="en">Start a project</span>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
   <footer>
     <div class="footer-row">
       <span>© <span id="year"></span> <span class="ko">서준원</span><span class="en">WADE</span></span>
@@ -764,8 +788,22 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var hdr = document.getElementById('hdr');
-    var onScroll = function () { hdr.classList.toggle('scrolled', window.scrollY > 16); };
-    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    var hero = document.getElementById('hero');
+    var contact = document.getElementById('contact');
+    var fab = document.getElementById('fab');
+    var onScroll = function () {
+      var y = window.scrollY;
+      hdr.classList.toggle('scrolled', y > 16);
+      if (fab) {
+        var pastHero = y > (hero ? hero.offsetHeight * 0.6 : 400);
+        var contactTop = contact ? contact.getBoundingClientRect().top : Infinity;
+        // show after hero, hide once the contact section (its destination) comes into view
+        fab.classList.toggle('show', pastHero && contactTop > window.innerHeight * 0.85);
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
