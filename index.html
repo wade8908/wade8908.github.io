@@ -71,7 +71,10 @@
     max-width: var(--col); margin: 0 auto; padding: 19px 28px;
     display: flex; align-items: center; justify-content: space-between;
   }
-  .logo { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
+  .logo { display: inline-flex; align-items: baseline; gap: 8px; font-size: 15px; letter-spacing: -0.01em; }
+  .logo .tag { color: var(--muted); font-weight: 500; }
+  .logo .nm { font-weight: 700; font-size: 16px; }
+  @media (max-width: 520px) { .logo .tag { display: none; } }
   .nav { display: flex; align-items: center; gap: 24px; }
   .nav a.navlink {
     font-size: 14.5px; color: var(--muted); position: relative; padding: 2px 0;
@@ -258,7 +261,10 @@
 
   <header id="hdr">
     <div class="bar">
-      <a href="#hero" class="logo"><span class="ko">서준원</span><span class="en">WADE</span></a>
+      <a href="#hero" class="logo">
+        <span class="tag"><span class="ko">브랜드의 표현을 돕습니다.</span><span class="en">I help brands express themselves.</span></span>
+        <span class="nm">Wade</span>
+      </a>
       <div class="nav">
         <a href="#about" class="navlink"><span class="ko">소개</span><span class="en">About</span></a>
         <a href="#services" class="navlink"><span class="ko">하는 일</span><span class="en">Services</span></a>
