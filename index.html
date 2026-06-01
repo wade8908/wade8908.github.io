@@ -16,6 +16,10 @@
 
 <link rel="stylesheet" as="style" crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Gowun+Batang:wght@400;700&display=swap" />
 
 <style>
   :root {
@@ -27,6 +31,12 @@
     --col:    680px;
     --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
             "Pretendard", "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
+    --serif: "Fraunces", "Gowun Batang", "Nanum Myeongjo", Georgia, "Apple SD Gothic Neo", serif;
+  }
+
+  /* Serif display for big type — warmer, editorial */
+  .hero-h, .about-h, .contact-h, .book-title, .proj-name, .stat .n, .label .num {
+    font-family: var(--serif);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -106,6 +116,11 @@
     font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em;
     text-transform: uppercase; color: var(--faint); margin-bottom: 34px;
     display: flex; align-items: baseline; gap: 11px;
+  }
+  .label .num {
+    font-size: 1.75rem; font-weight: 500; font-style: italic;
+    letter-spacing: 0; text-transform: none; line-height: 1;
+    color: var(--faint); margin-right: 3px;
   }
 
   /* ── Hero ─────────────────────────────────────────── */
@@ -333,21 +348,21 @@
   <!-- ── 01 About ───────────────────────────────────── -->
   <section id="about">
     <div class="col">
-      <div class="label reveal"><span>01</span><span class="ko">소개</span><span class="en">About</span></div>
+      <div class="label reveal"><span class="num">01</span><span class="ko">소개</span><span class="en">About</span></div>
       <h2 class="about-h reveal">
-        <span class="ko">콘텐츠와 모임, 두 가지로 브랜드와 사람을 잇는 일을 해요.</span>
-        <span class="en">I connect brands and people through two things — content, and gatherings.</span>
+        <span class="ko">브랜드의 표현을 돕고, 사람을 모아 커뮤니티로 잇는 일을 해요.</span>
+        <span class="en">I help brands express themselves — and bring people together into community.</span>
       </h2>
       <div class="prose reveal">
         <div class="block ko">
           <p>대학내일 크리에이티브센터에서 <strong>8년간 다양한 브랜드의 소셜미디어 콘텐츠</strong>를 기획했고, LG유플러스에서는 라이프플랫폼 콘텐츠 전략을 맡았어요. 지금은 <strong>일하는 사람들의 모임을 만들어 커뮤니티로 빚는 LBCC</strong>를 운영하고 있고요.</p>
-          <p>제 일을 한 문장으로 줄이면 이래요. 빠르게 변하는 SNS 트렌드 속에서 <strong>브랜드가 고객과 어떻게 커뮤니케이션해야 하는지를 연구하고, ‘흥행하는 콘텐츠’로 구현</strong>하는 것.</p>
+          <p>마케팅, 광고, 카피라이팅 — 모양은 달라도 제 일은 하나예요. <strong>브랜드가 자기다운 말을 찾고, 사람들에게 가닿게 하는 것.</strong> 빠르게 변하는 트렌드 속에서 어떻게 커뮤니케이션할지 연구하고, ‘흥행하는 콘텐츠’로 구현하죠.</p>
           <p>콘텐츠 마케팅과 모임을 주제로 두 권의 책을 썼고, 같은 주제로 기업·공공기관·대학에서 강의와 자문을 이어오고 있어요. 제가 믿는 건 단순해요. 좋은 콘텐츠는 <strong>최대한 많은 사람이 공감하는 데</strong>서 출발하고, 좋은 커뮤니티는 ‘성장’보다 <strong>‘생장’</strong>으로 자란다는 것.</p>
           <p>그래서 LBCC에서는 누구의 말도 평가하지 않아요. <strong>대화다운 대화가 오가는 안전지대</strong>를 만드는 게, 요즘 제가 가장 즐거워하는 일이에요.</p>
         </div>
         <div class="block en">
           <p>For <strong>eight years I planned social-media content</strong> for all kinds of brands at Daehaknaeil's Creative Center, then led content strategy for a life platform at LG U+. Now I run <strong>LBCC</strong>, where I bring working people together and shape those gatherings into a community.</p>
-          <p>My work in one line: <strong>studying how brands should talk to people</strong> amid fast-moving social trends — and turning that into content that actually takes off.</p>
+          <p>Marketing, advertising, copywriting — different shapes, one job: <strong>helping a brand find its own voice and reach people.</strong> I study how to communicate amid fast-moving trends, and turn it into content that takes off.</p>
           <p>I've written two books on content marketing and community, and I teach and advise on both for companies, public institutions, and universities. What I believe is simple: good content starts from <strong>what the most people can relate to</strong>, and good communities don't just grow — <strong>they take root</strong>.</p>
           <p>That's why at LBCC we never judge what anyone says. Building a <strong>safe place for real conversation</strong> is what I enjoy most these days.</p>
         </div>
@@ -392,7 +407,7 @@
   <!-- ── 02 Books ───────────────────────────────────── -->
   <section id="books">
     <div class="col">
-      <div class="label reveal"><span>02</span><span class="ko">저서</span><span class="en">Books</span></div>
+      <div class="label reveal"><span class="num">02</span><span class="ko">저서</span><span class="en">Books</span></div>
 
       <div class="book reveal">
         <div class="book-title"><a href="https://product.kyobobook.co.kr/detail/S000211521512" target="_blank" rel="noopener">훅, 끌어당기는 콘텐츠 마케팅</a><span class="book-tag"><span class="ko">베스트셀러</span><span class="en">Bestseller</span></span></div>
@@ -425,7 +440,7 @@
   <!-- ── 03 Services ────────────────────────────────── -->
   <section id="services">
     <div class="col">
-      <div class="label reveal"><span>03</span><span class="ko">하는 일</span><span class="en">Services</span></div>
+      <div class="label reveal"><span class="num">03</span><span class="ko">하는 일</span><span class="en">Services</span></div>
 
       <div class="svc reveal">
         <div class="svc-title"><span class="idx">A</span><span class="ko">강의 · 워크숍</span><span class="en">Lectures &amp; Workshops</span></div>
@@ -509,7 +524,7 @@
   <!-- ── 04 Clients ─────────────────────────────────── -->
   <section id="work">
     <div class="col">
-      <div class="label reveal"><span>04</span><span class="ko">작업</span><span class="en">Selected Work</span></div>
+      <div class="label reveal"><span class="num">04</span><span class="ko">작업</span><span class="en">Selected Work</span></div>
       <p class="clients-intro reveal">
         <span class="ko">10년 가까이 대학내일·LG유플러스, 그리고 프리랜서로 브랜드 콘텐츠와 캠페인을 만들었어요. 숫자로 남은 작업 몇 가지예요.</span>
         <span class="en">For nearly a decade — at Daehaknaeil, LG U+, and as a freelancer — I've built brand content and campaigns. A few projects, told with the numbers.</span>
@@ -752,7 +767,7 @@
   <!-- ── 05 Contact ─────────────────────────────────── -->
   <section id="contact">
     <div class="col">
-      <div class="label reveal"><span>05</span><span class="ko">연락</span><span class="en">Contact</span></div>
+      <div class="label reveal"><span class="num">05</span><span class="ko">연락</span><span class="en">Contact</span></div>
       <h2 class="contact-h reveal">
         <span class="ko">프로젝트, 편하게 문의해 주세요.</span>
         <span class="en">Have a project in mind? Let's start.</span>
