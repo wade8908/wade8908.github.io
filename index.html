@@ -32,6 +32,17 @@
     --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
             "Pretendard", "Helvetica Neue", "Apple SD Gothic Neo", Arial, sans-serif;
     --serif: "Fraunces", "Gowun Batang", "Nanum Myeongjo", Georgia, "Apple SD Gothic Neo", serif;
+    --accent: #b05a38;   /* muted terracotta — warm, not loud */
+  }
+
+  /* Marker highlight for key phrases */
+  .hl {
+    background: linear-gradient(to top,
+      color-mix(in srgb, var(--accent) 24%, transparent) 0,
+      color-mix(in srgb, var(--accent) 24%, transparent) 40%,
+      transparent 40%);
+    padding: 0 .05em;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
   }
 
   /* Serif display for big type — warmer, editorial */
@@ -120,7 +131,7 @@
   .label .num {
     font-size: 1.75rem; font-weight: 500; font-style: italic;
     letter-spacing: 0; text-transform: none; line-height: 1;
-    color: var(--faint); margin-right: 3px;
+    color: var(--accent); margin-right: 3px;
   }
 
   /* ── Hero ─────────────────────────────────────────── */
@@ -208,7 +219,7 @@
     border-bottom: 1px solid var(--line); padding-bottom: 2px;
     transition: color .25s ease, border-color .25s ease, gap .25s ease;
   }
-  .book-buy:hover { color: var(--ink); border-color: var(--ink); }
+  .book-buy:hover { color: var(--accent); border-color: var(--accent); }
 
   /* ── Services ─────────────────────────────────────── */
   .svc { padding: 28px 0; border-top: 1px solid var(--line); }
@@ -246,8 +257,8 @@
     display: flex; align-items: baseline; gap: 9px; line-height: 1.5;
   }
   .proj-metric::before {
-    content: ""; flex: none; width: 14px; height: 1px; background: var(--ink);
-    transform: translateY(-4px);
+    content: ""; flex: none; width: 14px; height: 2px; background: var(--accent);
+    transform: translateY(-5px);
   }
   @media (max-width: 480px) { .proj-yr { margin-left: 0; width: 100%; } }
   .subhead {
@@ -331,8 +342,8 @@
         <span class="en">Brand Content · Community · Teaching</span>
       </div>
       <h1 class="hero-h reveal">
-        <span class="ko">콘텐츠로 끌어당기고,<br />모임으로 머무르게 합니다.</span>
-        <span class="en">Content that pulls people in.<br />Community that makes them stay.</span>
+        <span class="ko">콘텐츠로 <span class="hl">끌어당기고</span>,<br />모임으로 <span class="hl">머무르게</span> 합니다.</span>
+        <span class="en">Content that <span class="hl">pulls people in</span>.<br />Community that <span class="hl">makes them stay</span>.</span>
       </h1>
       <p class="hero-sub reveal">
         <span class="ko">안녕하세요, 준원입니다. 빠르게 바뀌는 흐름을 읽고, 그 안에서 사람을 모으는 일을 좋아해요. 요즘은 LBCC를 운영하며 모임을 만들고, 브랜드의 콘텐츠와 커뮤니티를 강의하고 자문합니다.</span>
@@ -350,8 +361,8 @@
     <div class="col">
       <div class="label reveal"><span class="num">01</span><span class="ko">소개</span><span class="en">About</span></div>
       <h2 class="about-h reveal">
-        <span class="ko">브랜드의 표현을 돕고, 사람을 모아 커뮤니티로 잇는 일을 해요.</span>
-        <span class="en">I help brands express themselves — and bring people together into community.</span>
+        <span class="ko"><span class="hl">브랜드의 표현</span>을 돕고, 사람을 모아 <span class="hl">커뮤니티</span>로 잇는 일을 해요.</span>
+        <span class="en">I help brands <span class="hl">express themselves</span> — and bring people together into <span class="hl">community</span>.</span>
       </h2>
       <div class="prose reveal">
         <div class="block ko">
